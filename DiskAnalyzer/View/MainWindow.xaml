@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:DiskAnalyzer"
         mc:Ignorable="d"
         Title="Анализ дисков" Height="450" Width="700"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Icon="Icons/drive.ico">
     
     <Window.Resources>
         <local:PercentToColorConverter x:Key="PercentToColorConverter"/>

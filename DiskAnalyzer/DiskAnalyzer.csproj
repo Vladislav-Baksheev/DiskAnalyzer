@@ -28,4 +28,9 @@
       <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="View\Icons\drive.ico" />
+      <Resource Include="View\Icons\drive.ico" />
+    </ItemGroup>
+
 </Project>
