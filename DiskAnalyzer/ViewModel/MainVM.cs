@@ -25,9 +25,12 @@ public class MainVM
                 drives.Add(new Drive()
                 {
                     DriveName = drive.Name,
-                    TotalSize = ByteConverter.ToGigabytes(drive.TotalSize),
-                    FreeSize = ByteConverter.ToGigabytes(drive.AvailableFreeSpace),
-                    UsedSize = ByteConverter.ToGigabytes(drive.TotalSize - drive.AvailableFreeSpace)
+                    TotalSize = DiskSizeConverter.ToGigabytes(drive.TotalSize),
+                    FreeSize = DiskSizeConverter.ToGigabytes(drive.AvailableFreeSpace),
+                    UsedSize = DiskSizeConverter.ToGigabytes(drive.TotalSize - drive.AvailableFreeSpace),
+                    UsagePercent = DiskSizeConverter.BytesToPercent(
+                        drive.TotalSize - drive.AvailableFreeSpace, 
+                        drive.TotalSize)
                 });
             }
             catch
