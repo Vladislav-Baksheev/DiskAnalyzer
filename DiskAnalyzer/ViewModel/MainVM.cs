@@ -42,6 +42,7 @@ public partial class MainVM : ObservableObject
             }
             catch
             {
+                throw new Exception("Возникла проблема с диском.");
             }
         }
 
