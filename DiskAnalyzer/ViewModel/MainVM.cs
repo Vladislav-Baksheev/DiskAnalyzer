@@ -1,21 +1,28 @@
 using System.Collections.ObjectModel;
 using System.IO;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using DiskAnalyzer.Model;
 using DiskAnalyzer.ViewModel.Services;
 
 namespace DiskAnalyzer.ViewModel;
 
-public class MainVM
+public partial class MainVM : ObservableObject
 {
-    public List<Drive> Drives { get; set; } = new();
+    private ObservableCollection<Drive> _drives = new();
+    
+    public ObservableCollection<Drive> Drives
+    {
+        get => _drives;
+        set => SetProperty(ref _drives, value);
+    }
     
     public MainVM()
     {
-        Drives = AnalyzeDisk();
+        AnalyzeDisk();
     }
-
-    private List<Drive> AnalyzeDisk()
+    
+    private void AnalyzeDisk()
     {
         var drives = new List<Drive>();
         foreach (var drive in DriveInfo.GetDrives())
@@ -38,6 +45,12 @@ public class MainVM
             }
         }
 
-        return drives;
+        Drives = new ObservableCollection<Drive>(drives);
+    }
+
+    [RelayCommand]
+    private void Update()
+    {
+        AnalyzeDisk();
     }
 }

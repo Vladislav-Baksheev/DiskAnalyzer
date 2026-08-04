@@ -31,10 +31,13 @@
                     Value="{Binding UsagePercent}" 
                     Height="20" 
                     Width="200"/>
-                
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
+    
+    <Window.InputBindings>
+        <KeyBinding Key="F5" Command="{Binding UpdateCommand}" />
+    </Window.InputBindings>
     
     <Grid>
         <ListBox 

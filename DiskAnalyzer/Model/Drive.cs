@@ -1,10 +1,18 @@
+using CommunityToolkit.Mvvm.ComponentModel;
+
 namespace DiskAnalyzer.Model;
 
-public class Drive
+public partial class Drive : ObservableObject
 {
-    public string DriveName { get; set; }
-    public double TotalSize { get; set; }
-    public double UsedSize { get; set; }
-    public double FreeSize { get; set; }
-    public int UsagePercent { get; set; }
+    [ObservableProperty] 
+    private string _driveName;
+
+    [ObservableProperty] 
+    private double _totalSize;
+    [ObservableProperty]
+    private double _usedSize;
+    [ObservableProperty] 
+    private double _freeSize;
+    [ObservableProperty] 
+    private int _usagePercent;
 }
